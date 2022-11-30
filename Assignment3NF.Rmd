@@ -1,0 +1,75 @@
+---
+title: "Assignment1"
+output: bookdown::word_document2
+date: "2022-11-05"
+
+---
+
+```{r setup0, include=FALSE}
+
+install.packages("bookdown")
+library(bookdown)
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.align ="center")
+```
+
+## Assignment1 plots
+
+```{r Figure,fig.height=7 , echo=TRUE}
+plot(pressure)
+```
+
+
+
+## Write data from R into a CSV file
+```{r}
+write.csv(cars, file = "Data/cars.csv")
+```
+
+## Learning to reference figures
+
+```{r,FigreAssessmment2, fig.cap="This is random noise"}
+x = rnorm(100) 
+y = seq(1:100) 
+
+dat = data.frame(x, y) 
+ggplot(dat, aes(x = x, y = y)) + 
+    geom_line()
+
+```
+
+We are practicing to reference a figure \@ref(fig:FigreAssessmment2).
+
+## Learning to reference tables
+
+```{r TableAssessment2}
+table_dat <- head(dat,5)
+knitr::kable(table_dat, 
+             caption = "This is random noise table",
+             digits = 1)
+```
+
+We are practicing to reference a table \@ref(tab:TableAssessment2).
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
